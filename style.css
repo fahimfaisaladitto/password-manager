@@ -1,0 +1,108 @@
+/* --- Custom CSS Variables for Theming --- */
+:root {
+    --bg-body: #f3f4f6;
+    --bg-card: rgba(255, 255, 255, 0.5);
+    --text-primary: #1f2937;
+    --text-secondary: #4b5563;
+    --border-card: rgba(255, 255, 255, 0.4);
+    --toggle-bg: #d1d5db;
+    --toggle-ball-bg: #ffffff;
+    --accent-color: #008cff;
+    --input-bg: rgba(0, 0, 0, 0.05);
+    --valid-color: #22c55e; /* green-500 */
+    --invalid-color: var(--text-secondary);
+    --error-color: #ef4444; /* red-500 */
+}
+
+html.dark {
+    --bg-body: #111827;
+    --bg-card: rgba(31, 41, 55, 0.5);
+    --text-primary: #f9fafb;
+    --text-secondary: #d1d5db;
+    --border-card: rgba(55, 65, 81, 0.5);
+    --toggle-bg: #374151;
+    --toggle-ball-bg: #111827;
+    --input-bg: rgba(0, 0, 0, 0.2);
+    --valid-color: #4ade80; /* green-400 */
+    --invalid-color: var(--text-secondary);
+    --error-color: #f87171; /* red-400 */
+}
+
+/* --- Applying Variables --- */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-primary);
+    transition: background-color 0.3s;
+}
+.main-card {
+    background-color: var(--bg-card);
+    border-color: var(--border-card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+.toggle-bg { background-color: var(--toggle-bg); }
+.toggle-ball { background-color: var(--toggle-ball-bg); }
+.accent-text { color: var(--accent-color); }
+.input-field { 
+    background-color: var(--input-bg); 
+}
+
+/* --- Rule List Styling --- */
+.rule-item {
+    color: var(--invalid-color);
+    transition: color 0.3s ease-in-out;
+}
+.rule-item.valid {
+    color: var(--valid-color);
+}
+
+/* --- Modal Styling --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    padding: 1rem;
+}
+.modal-content {
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid var(--border-card);
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+    text-align: center;
+    position: relative;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    width: 100%;
+    max-width: 400px;
+}
+
+
+/* --- Animations --- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+@keyframes rule-in {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+.rule-in {
+    animation: rule-in 0.4s ease-out forwards;
+}
+.error-message {
+    color: var(--error-color);
+    transition: opacity 0.3s;
+}
